@@ -11,4 +11,11 @@ angular.module('kanbanBoard')
     $scope.onDrop = function($event,$data, location){
       $scope.newLocation = location
     };
+    $scope.deleteTask = function (item) {
+      for (var i = 0; i < $scope.tasks.length; i++) {
+        if (item.task === $scope.tasks[i].task ) {
+          $scope.tasks.splice(i, 1)
+        };
+      };
+    }
 })
