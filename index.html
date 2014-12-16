@@ -2,9 +2,8 @@
 <html ng-app="kanbanBoard">
 <head>
   <title>Kanban Board</title>
-  <link rel="stylesheet" type="text/css" href="css/css.css">
-  <link rel="stylesheet" type="text/css" href="bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-theme.css">
   <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
   <script src="angular.min.js"></script>
   <script src="draganddrop.js"></script>
@@ -34,17 +33,21 @@
         <ul ui-on-Drop="onDrop($event,$data,'Todo')">
           <li ng-repeat="item in tasks | filter: {status: 'Todo'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
             {{item.task}}
+            <a href="#" ng-click="deleteTask(item)">x</a>
           </li>
         </ul>
         <h2 class="list_group">Working On:</h2>
           <ul ui-on-Drop="onDrop($event,$data,'Working On')">
-            <li ng-repeat="item in tasks | filter: {status: 'Working On'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">{{item.task}}
+            <li ng-repeat="item in tasks | filter: {status: 'Working On'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
+              {{item.task}}
+              <a href="#">x</a>
             </li>
           </ul>
         <h2 class="list_group">Done:</h2>
           <ul ui-on-Drop="onDrop($event,$data,'Done')">
             <li ng-repeat="item in tasks | filter: {status: 'Done'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
               {{item.task}}
+              <a href="#">x</a>
             </li>
           </ul>
       <hr>
