@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="kanbanBoard">
+<head>
+  <title>Kanban Board</title>
+  <link rel="stylesheet" type="text/css" href="css/css.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
+  <script src="angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+    angular.module('kanbanBoard', [])
+  </script>
+  <script src="controllers/group_list.js"></script>
+  <script src="controllers/todo.js"></script>
+  <script src="controllers/move_todo.js"></script>
+</head>
+<body ng-controller="TodoCtrl" class="backgournd">
+
+  <div class=" navbar navbar-inverse">
+    <a href="#" class="navbar-brand">Your Cool KanBan Board!</a>
+  </div>
+
+<div>
+  <div class="container">
+    <textarea type="text" class="col-xs-4" ng-model="newTodo" ></textarea>
+    <br><br><br>
+    <button type="button" class="btn btn-success" ng-click="addTodo(newTodo)">Success</button>
+  </div>
+
+  <hr>
+
+  <div class="container" ng-repeat="item in data.lists">
+      <h2 class="list_group">{{item.label}}:</h2>
+        <ul class="lists">
+          <li ng-repeat="item in tasks | filter: {status: item.label}">{{item.task}}</li>
+        </ul>
+      <hr>
+  </div>
+</div>
+
+</body>
+</html>
