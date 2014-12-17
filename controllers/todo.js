@@ -2,12 +2,9 @@ angular.module('kanbanBoard')
 .controller('TodoCtrl', function ($scope) {
   $scope.tasks = [];
    $scope.addTodo = function (todo) {
-      if (todo == "") {
-        console.log("nothing to be added")
-      }else{
+      if (todo !== undefined && todo !== "") {
         $scope.tasks.push({task: todo, status: "Todo"})
       };
-
       $scope.newTodo = ""
     };
     $scope.dropSuccessHandler = function($event, item){
