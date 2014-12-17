@@ -26,21 +26,21 @@
     </div>
 
     <div class="container">
-      <h2>Todo:</h2>
+      <h2>Todo</h2>
       <ul ui-on-Drop="onDrop($event,$data,'Todo')">
         <li ng-repeat="item in tasks | filter: {status: 'Todo'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
           {{item.task}}
           <a href="#" ng-click="deleteTask(item)">x</a>
         </li>
       </ul>
-      <h2>Working On:</h2>
+      <h2>Working On</h2>
       <ul ui-on-Drop="onDrop($event,$data,'Working On')">
         <li ng-repeat="item in tasks | filter: {status: 'Working On'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
           {{item.task}}
           <a href="#" ng-click="deleteTask(item)">x</a>
         </li>
       </ul>
-      <h2>Done:</h2>
+      <h2>Done</h2>
       <ul ui-on-Drop="onDrop($event,$data,'Done')">
         <li ng-repeat="item in tasks | filter: {status: 'Done'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
           {{item.task}}
