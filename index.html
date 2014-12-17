@@ -2,16 +2,15 @@
 <html ng-app="kanbanBoard">
 <head>
   <title>Kanban Board</title>
+  <link rel="stylesheet" type="text/css" href="css.css">
   <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-theme.css">
-  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
   <script src="angular.min.js"></script>
   <script src="draganddrop.js"></script>
   <script>
-    angular.module('kanbanBoard', ['ngDragDrop'])
+  angular.module('kanbanBoard', ['ngDragDrop'])
   </script>
   <script src="controllers/todo.js"></script>
-
 </head>
 <body ng-controller="TodoCtrl" class="backgournd">
 
@@ -19,40 +18,37 @@
     <a href="#" class="navbar-brand">Your Cool KanBan Board!</a>
   </div>
 
-<div>
-  <div class="container">
-    <textarea type="text" class="col-xs-4" ng-model="newTodo" ></textarea>
-    <br><br><br>
-    <button type="button" class="btn btn-success" ng-click="addTodo(newTodo)">Success</button>
-  </div>
+  <div>
+    <div class="container">
+      <textarea rows="4" cols="50" type="text" ng-model="newTodo" class="col-xs-7"></textarea>
+      <br><br><br><br><br>
+      <button type="button" class="btn btn-info" ng-click="addTodo(newTodo)">Add Task</button>
+    </div>
 
-  <hr>
-
-  <div class="container">
-      <h2 class="list_group">Todo:</h2>
-        <ul ui-on-Drop="onDrop($event,$data,'Todo')">
-          <li ng-repeat="item in tasks | filter: {status: 'Todo'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
-            {{item.task}}
-            <a href="#" ng-click="deleteTask(item)">x</a>
-          </li>
-        </ul>
-        <h2 class="list_group">Working On:</h2>
-          <ul ui-on-Drop="onDrop($event,$data,'Working On')">
-            <li ng-repeat="item in tasks | filter: {status: 'Working On'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
-              {{item.task}}
-              <a href="#">x</a>
-            </li>
-          </ul>
-        <h2 class="list_group">Done:</h2>
-          <ul ui-on-Drop="onDrop($event,$data,'Done')">
-            <li ng-repeat="item in tasks | filter: {status: 'Done'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
-              {{item.task}}
-              <a href="#">x</a>
-            </li>
-          </ul>
-      <hr>
+    <div class="container">
+      <h2>Todo:</h2>
+      <ul ui-on-Drop="onDrop($event,$data,'Todo')">
+        <li ng-repeat="item in tasks | filter: {status: 'Todo'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
+          {{item.task}}
+          <a href="#" ng-click="deleteTask(item)">x</a>
+        </li>
+      </ul>
+      <h2>Working On:</h2>
+      <ul ui-on-Drop="onDrop($event,$data,'Working On')">
+        <li ng-repeat="item in tasks | filter: {status: 'Working On'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
+          {{item.task}}
+          <a href="#" ng-click="deleteTask(item)">x</a>
+        </li>
+      </ul>
+      <h2>Done:</h2>
+      <ul ui-on-Drop="onDrop($event,$data,'Done')">
+        <li ng-repeat="item in tasks | filter: {status: 'Done'}" ui-draggable="true" drag="item" on-drop-success="dropSuccessHandler($event, item)">
+          {{item.task}}
+          <a href="#" ng-click="deleteTask(item)">x</a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 
 </body>
 </html>
